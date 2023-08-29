@@ -11,4 +11,12 @@ class AuthDataSourceMockImp implements AuthDataSource {
       );
     });
   }
+
+  @override
+  Future<bool> recoverPassword(String email) {
+    return Future.delayed(
+      const Duration(seconds: 2),
+      () => true,
+    );
+  }
 }

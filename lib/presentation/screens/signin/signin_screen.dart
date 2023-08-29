@@ -51,7 +51,7 @@ class _SigninScreenState extends State<SigninScreen> with ValidatorsMixin {
         children: [
           Scaffold(
             body: LayoutBuilder(
-              builder: (context, constraints) {
+              builder: (_, constraints) {
                 return Row(
                   children: [
                     Visibility(
@@ -86,6 +86,7 @@ class _SigninScreenState extends State<SigninScreen> with ValidatorsMixin {
                                 ),
                                 TextFormField(
                                   controller: emailController,
+                                  textInputAction: TextInputAction.next,
                                   decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     prefixIcon: Icon(Icons.email),
@@ -106,6 +107,10 @@ class _SigninScreenState extends State<SigninScreen> with ValidatorsMixin {
                                   builder: (context, value, child) {
                                     return TextFormField(
                                       controller: passwordController,
+                                      textInputAction: TextInputAction.send,
+                                      onFieldSubmitted: (_) {
+                                        _signin();
+                                      },
                                       decoration: InputDecoration(
                                         border: const OutlineInputBorder(),
                                         prefixIcon: const Icon(Icons.lock),
@@ -137,7 +142,12 @@ class _SigninScreenState extends State<SigninScreen> with ValidatorsMixin {
                                           color: theme.colorScheme.primary,
                                         ),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                          context,
+                                          AppRoutes.forgotPassword,
+                                        );
+                                      },
                                     ),
                                   ],
                                 ),

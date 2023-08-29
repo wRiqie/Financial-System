@@ -11,4 +11,9 @@ class AuthRepository {
   Future<DefaultResponseModel<AuthModel>> signin({required AuthModel login}) {
     return ExecuteService.tryExecuteAsync(_authDataSource.signin(login));
   }
+
+  Future<DefaultResponseModel<bool>> recoverPassword(String email) {
+    return ExecuteService.tryExecuteAsync(
+        _authDataSource.recoverPassword(email));
+  }
 }
