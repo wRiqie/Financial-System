@@ -13,6 +13,7 @@ abstract class _BaseSnackbar {
     _closeCurrent();
     Flushbar(
       flushbarPosition: FlushbarPosition.TOP,
+      maxWidth: MediaQuery.of(context).size.width * .3,
       margin: const EdgeInsets.all(8),
       title: title,
       message: message,
